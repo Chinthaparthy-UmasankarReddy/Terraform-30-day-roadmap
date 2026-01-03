@@ -1,10 +1,11 @@
 
 # Terraform Project 12: EKS Kubernetes Cluster (AWS) 
 
-[
-[
-[
-[
+[![Project-12](https://img.shields.io/badge/Project_12-AWS_EKS-232F3E?style=for-the-badge&logo=amazon-eks&logoColor=white)](projects/intermediate/12-aws-eks/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.29-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+[![IRSA](https://img.shields.io/badge/IRSA-Enabled-00D4AA?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
+[![VPC-CNI](https://img.shields.io/badge/VPC--CNI-ENI_per_pod-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html)
+
 
 ## 🎯 Project Overview
 
@@ -547,6 +548,8 @@ terraform destroy -auto-approve
 
 
 *Updated: Jan 2026* 
+
+
 
 
 

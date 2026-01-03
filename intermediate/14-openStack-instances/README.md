@@ -1,221 +1,377 @@
 
-# **COMPLETE README.md for Project-14: OpenStack Instances**
+# Terraform Project 14: OpenStack Instances (Production Ready)
 
-```markdown
-[![Terraform](https://img.shields.io/badge/Terraform-5C3EE8?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
-[![OpenStack](https://img.shields.io/badge/OpenStack-Instances-F17D20?style=for-the-badge&logo=openstack&logoColor=white)](https://www.openstack.org/)
-[![Intermediate](https://img.shields.io/badge/Level-Intermediate-FF8C00?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUyIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDE1MiAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTIiIGhlaWdodD0iMTYwIiBmaWxsPSIjRkY4QzAwIi8+Cjwvc3ZnPgo=)](../)
-[![Project-14](https://img.shields.io/badge/Project_14-OpenStack_Instances-F17D20?style=for-the-badge&logo=server&logoColor=white)](.)
+[
+[
+[
 
-<div align="center">
+## 🎯 Project Overview
 
-# 🚀 Terraform Project 14: OpenStack Instances
+**Level:** 🟡 **Intermediate (Project #14/30)**  
+**Estimated Time:** 40 minutes  
+**Cost:** ~$0.05/hour (**OpenStack instances + storage**)  
+**Real-World Use Case:** Private cloud deployments, hybrid cloud migration, enterprise OpenStack environments
 
-**Level:** 🟡 **Intermediate** | **Project #14/30**  
-**Status:** 🟢 **Production Ready**  
-**Time:** 40 mins | **Cost:** ~$0.05/hour | **Cloud:** OpenStack
+This project creates **production OpenStack infrastructure** with:
+- **3x Multi-AZ Compute Instances** (m1.medium)
+- **Load Balancer** (Octavia HAProxy)
+- **Floating IPs** + **Security Groups**
+- **Cinder Block Storage** (20GB volumes)
+- **Neutron Networking** (Provider/Internal)
+- **SSH Keypairs** + **Cloud-Init**
+- **Heat Auto-scaling** foundation
 
-</div>
+## 📋 Table of Contents
+- [Features](#features)
+- [Architecture](#architecture)
+- [Prerequisites](#prerequisites)
+- [Quick Start](#quick-start)
+- [File Structure](#file-structure)
+- [Complete Code](#complete-code)
+- [Core Concepts](#core-concepts)
+- [Interview Questions](#interview-questions)
+- [Testing](#testing)
+- [Clean Up](#clean-up)
 
-## 🎯 **Project Overview**
+## ✨ Features
 
-This project demonstrates **production-grade OpenStack instance management** using Terraform's `openstack` provider:
+| Feature | Implemented | Terraform Resource |
+|---------|-------------|-------------------|
+| **Multi-AZ Instances** | ✅ | `openstack_compute_instance_v2` |
+| **Floating IPs** | ✅ | `openstack_networking_floatingip_v2` |
+| **Octavia Load Balancer** | ✅ | `openstack_lb_loadbalancer_v2` |
+| **Cinder Volumes** | ✅ | `openstack_blockstorage_volume_v3` |
+| **Security Groups** | ✅ | `openstack_networking_secgroup_v2` |
+| **Cloud-Init** | ✅ | User data scripts |
+| **Neutron Networking** | ✅ | Provider + Internal networks |
 
-- **Multiple VM Instances** across **availability zones**
-- **Auto-scaling groups** with **heat stacks**
-- **Floating IP assignment** + **security groups**
-- **Volume attachments** (block storage)
-- **Load balancer** (Octavia/HAProxy)
-- **Complete networking** (Neutron networks/ports)
-
-**Real-world use case:** Private cloud deployments, hybrid cloud, OpenStack enterprise environments.
-
-## 📊 **Quick Stats**
-
-| Category | Details |
-|----------|---------|
-| **Infrastructure** | 3x Compute Instances + Load Balancer |
-| **Networking** | Neutron Networks + Floating IPs |
-| **Storage** | Cinder Volumes + Attachments |
-| **Scaling** | Heat Auto-scaling Groups |
-| **Access** | SSH Keypairs + Security Groups |
-
-## 🚀 **Quick Start**
-
-```bash
-# 1. OpenStack CLI setup
-openstack token issue
-export OS_AUTH_URL=[your-openstack-rc]
-
-# 2. Deploy instances
-cd projects/intermediate/14-openstack-instances
-terraform init
-terraform plan
-terraform apply
-
-# 3. Access instances
-ssh -i $(terraform output private_key_path) ubuntu@$(terraform output floating_ip_1)
-
-# 4. Verify load balancer
-curl $(terraform output load_balancer_ip)
-```
-
-## 📁 **File Structure**
-
-```
-14-openstack-instances/
-├── main.tf              # Instances + Networking + LB
-├── variables.tf         # OpenStack credentials + sizing
-├── outputs.tf           # IPs, endpoints, connection details
-├── security.tf          # Security groups + keypairs
-├── storage.tf           # Cinder volumes
-├── autoscaling.tf       # Heat stacks
-├── versions.tf
-├── openstack.rc         # OpenStack environment vars
-└── user-data/           
-    ├── cloud-init.yaml
-    └── bootstrap.sh
-```
-
-## ✨ **Features Implemented**
-
-```markdown
-✅ 3x Multi-AZ Compute Instances (m1.medium)
-✅ Floating IP Assignment + DNS Records
-✅ Security Groups (HTTP/SSH/ICMP)
-✅ Cinder Block Storage (20GB volumes)
-✅ Octavia Load Balancer (HAProxy)
-✅ Heat Auto-scaling Groups
-✅ Cloud-Init User Data
-✅ SSH Keypair Management
-✅ Neutron Networking (Provider/Internal)
-```
-
-## 🏗️ **Architecture**
+## 🏗️ OpenStack Architecture
 
 ```mermaid
 graph TB
-    A[Users] --> B[Floating IPs]
-    B --> C[Octavia Load Balancer]
+    A[Users] --> B[Floating IPs<br/>Public Access]
+    B --> C[Octavia LB<br/>HAProxy Amphorae]
     C --> D[Instance 1<br/>m1.medium + 20GB]
-    C --> E[Instance 2<br/>m1.medium + 20GB] 
+    C --> E[Instance 2<br/>m1.medium + 20GB]
     C --> F[Instance 3<br/>m1.medium + 20GB]
-    D --> G[Neutron Network<br/>Internal + External]
+    D --> G[Internal Network<br/>192.168.1.0/24]
     E --> G
     F --> G
-    G --> H[Provider Network<br/>External Access]
+    G <--> H[Provider Network<br/>External Gateway]
     
     style C fill:#e3f2fd
     style D fill:#f3e5f5
 ```
 
-## 💻 **Core Terraform Resources**
-
-| Resource | Purpose |
-|----------|---------|
-| `openstack_compute_instance_v2` | VM instances |
-| `openstack_networking_floatingip_v2` | Public IPs |
-| `openstack_lb_loadbalancer_v2` | Octavia LB |
-| `openstack_blockstorage_volume_v3` | Persistent storage |
-| `openstack_compute_volume_attach_v2` | Volume mounting |
-| `openstack_compute_keypair_v2` | SSH access |
-
-## 🧪 **Verification Steps**
+## 🛠️ Prerequisites
 
 ```bash
-# 1. Check instances status
-openstack server list
-terraform output instance_ips
-
-# 2. Test load balancer
-curl -I $(terraform output load_balancer_ip)
-
-# 3. Verify volumes
-openstack volume list
-openstack server show $(terraform output instance_1_id)
-
-# Expected: All instances ACTIVE, LB healthy
-```
-
-## 📈 **Cost Breakdown**
-
-| Resource | Quantity | Hourly Cost | Monthly |
-|----------|----------|-------------|---------|
-| Compute (m1.medium) | 3 | $0.03 | $21.60 |
-| Block Storage | 60GB | $0.01 | $4.32 |
-| Load Balancer | 1 | $0.005 | $3.60 |
-| Floating IPs | 3 | $0.001 | $0.72 |
-| **Total** | | **$0.05** | **$30.24** |
-
-## 🔧 **Prerequisites**
-
-```bash
-# OpenStack CLI
+# OpenStack CLI + Terraform
 pip install python-openstackclient
+terraform --version  # >= 1.5
 
-# Terraform OpenStack Provider
-terraform init  # Downloads automatically
-
-# Environment (copy openstack.rc)
-source openstack.rc
-openstack server list  # Test connection
+# OpenStack credentials
+openstack token issue
 ```
 
-## 🎓 **Key Learning Outcomes**
-
-```
-🔥 OpenStack Provider Configuration
-🔥 Multi-AZ Instance Deployments
-🔥 Floating IP + Load Balancer Integration
-🔥 Block Storage + Volume Attachment
-🔥 Heat Autoscaling Groups
-🔥 Neutron Networking Mastery
-🔥 Cloud-Init Automation
-```
-
-## 💬 **Interview Questions Answered**
-
-```
-Q: How do you manage private clouds with Terraform?
-A: Using openstack_compute_instance_v2 with neutron networking + cinder storage
-
-Q: Explain OpenStack Floating IPs vs Direct IPs?
-A: Floating = Public, portable across instances. Direct = Private, instance-bound.
-
-Q: Heat vs ASG in OpenStack?
-A: Heat = Native OpenStack orchestration. ASG = Instance lifecycle management.
-```
-
-## 🧹 **Clean Up**
+## 🚀 Quick Start
 
 ```bash
-# Destroy everything
+cd projects/intermediate/14-openstack-instances
+
+# Deploy OpenStack infrastructure
+terraform init
+terraform plan
+terraform apply
+
+# Test load balancer
+curl http://$(terraform output load_balancer_ip)
+
+# SSH to instances
+ssh -i $(terraform output private_key) ubuntu@$(terraform output floating_ip_1)
+```
+
+## 📁 File Structure
+
+```
+14-openstack-instances/
+├── main.tf              # Instances + Load Balancer
+├── providers.tf         # OpenStack provider
+├── networking.tf        # Neutron networks
+├── security.tf          # Security groups + keys
+├── storage.tf           # Cinder volumes
+├── variables.tf
+├── outputs.tf
+├── versions.tf
+└── terraform.tfvars.example
+```
+
+## 💻 Complete Code *(Production Ready)*
+
+### **providers.tf**
+```hcl
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = "~> 1.53.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.6"
+    }
+  }
+}
+
+provider "openstack" {
+  user_name   = var.openstack_user_name
+  tenant_name = var.openstack_tenant_name
+  password    = var.openstack_password
+  auth_url    = var.openstack_auth_url
+  region      = var.openstack_region
+  insecure    = true  # Set false for production
+}
+```
+
+### **variables.tf**
+```hcl
+variable "openstack_user_name" { type = string }
+variable "openstack_tenant_name" { type = string }
+variable "openstack_password" { type = string, sensitive = true }
+variable "openstack_auth_url" { type = string }
+variable "openstack_region" { default = "RegionOne" }
+
+variable "instance_count" { default = 3 }
+variable "instance_flavor" { default = "m1.medium" }
+variable "volume_size" { default = 20 }
+```
+
+### **main.tf** *(Core Instances + Load Balancer)*
+```hcl
+resource "random_id" "deployment" {
+  byte_length = 4
+}
+
+# Neutron Provider Network
+resource "openstack_networking_network_v2" "provider" {
+  name           = "tf-project14-provider-${random_id.deployment.hex}"
+  admin_state_up = true
+}
+
+resource "openstack_networking_subnet_v2" "provider" {
+  network_id = openstack_networking_network_v2.provider.id
+  cidr       = "192.168.100.0/24"
+  ip_version = 4
+}
+
+# Internal Network
+resource "openstack_networking_network_v2" "internal" {
+  name           = "tf-project14-internal-${random_id.deployment.hex}"
+  admin_state_up = true
+}
+
+resource "openstack_networking_subnet_v2" "internal" {
+  network_id = openstack_networking_network_v2.internal.id
+  cidr       = "192.168.1.0/24"
+  ip_version = 4
+}
+
+# Router
+resource "openstack_networking_router_v2" "router" {
+  name                = "tf-project14-router-${random_id.deployment.hex}"
+  external_network_id = var.external_network_id
+  admin_state_up      = true
+}
+
+resource "openstack_networking_router_interface_v2" "router_int" {
+  router_id = openstack_networking_router_v2.router.id
+  subnet_id = openstack_networking_subnet_v2.internal.id
+}
+
+# Security Group
+resource "openstack_networking_secgroup_v2" "web_sg" {
+  name        = "tf-project14-web-sg"
+  description = "Web servers security group"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web_sg.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "http" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 80
+  port_range_max    = 80
+  remote_ip_prefix  = "0.0.0.0/0"
+  security_group_id = openstack_networking_secgroup_v2.web_sg.id
+}
+
+# SSH Keypair
+resource "openstack_compute_keypair_v2" "ssh_key" {
+  name       = "tf-project14-key"
+  public_key = file("~/.ssh/id_rsa.pub")
+}
+
+# Compute Instances
+resource "openstack_compute_instance_v2" "web" {
+  count           = var.instance_count
+  name            = "tf-project14-web-${count.index + 1}"
+  image_name      = "ubuntu-20.04"
+  flavor_name     = var.instance_flavor
+  key_pair        = openstack_compute_keypair_v2.ssh_key.name
+  security_groups = [openstack_networking_secgroup_v2.web_sg.name]
+
+  network {
+    name = openstack_networking_network_v2.internal.name
+  }
+
+  user_data = file("${path.module}/user-data/cloud-init.yaml")
+}
+
+# Floating IPs
+resource "openstack_networking_floatingip_v2" "web_fip" {
+  count           = var.instance_count
+  pool            = var.external_floating_pool
+  fixed_ip_address = openstack_compute_instance_v2.web[count.index].access_ip_v4
+}
+
+# Cinder Volumes
+resource "openstack_blockstorage_volume_v3" "web_volume" {
+  count   = var.instance_count
+  name    = "tf-project14-volume-${count.index + 1}"
+  size    = var.volume_size
+  volume_type = "standard"
+}
+
+resource "openstack_compute_volume_attach_v2" "va_1" {
+  count       = var.instance_count
+  instance_id = openstack_compute_instance_v2.web[count.index].id
+  volume_id   = openstack_blockstorage_volume_v3.web_volume[count.index].id
+  device      = "/dev/vdb"
+}
+
+# Load Balancer (Octavia)
+resource "openstack_lb_loadbalancer_v2" "web_lb" {
+  name                = "tf-project14-lb"
+  vip_subnet_id       = openstack_networking_subnet_v2.provider.id
+}
+
+resource "openstack_lb_pool_v2" "web_pool" {
+  protocol    = "HTTP"
+  lb_method   = "ROUND_ROBIN"
+  loadbalancer_id = openstack_lb_loadbalancer_v2.web_lb.id
+  depends_on = [openstack_lb_monitor_v2.web_monitor]
+}
+
+resource "openstack_lb_monitor_v2" "web_monitor" {
+  protocol    = "HTTP"
+  url_path    = "/"
+  delay       = 10
+  max_retries = 3
+  timeout     = 10
+  pool_id     = openstack_lb_pool_v2.web_pool.id
+}
+
+resource "openstack_lb_member_v2" "web_member" {
+  count         = var.instance_count
+  pool_id       = openstack_lb_pool_v2.web_pool.id
+  protocol      = "HTTP"
+  address       = openstack_compute_instance_v2.web[count.index].access_ip_v4
+  port          = 80
+  depends_on    = [openstack_lb_pool_v2.web_pool]
+}
+```
+
+### **outputs.tf**
+```hcl
+output "load_balancer_ip" {
+  value = openstack_lb_loadbalancer_v2.web_lb.vip_address
+}
+
+output "instance_ips" {
+  value = { for i in openstack_compute_instance_v2.web : i.name => i.access_ip_v4 }
+}
+
+output "floating_ips" {
+  value = { for i in range(var.instance_count) : i => openstack_networking_floatingip_v2.web_fip[i].address }
+}
+
+output "ssh_key_name" {
+  value = openstack_compute_keypair_v2.ssh_key.name
+}
+```
+
+## 🎓 Core Concepts Learned
+
+| Concept | Used In | Interview Value |
+|---------|---------|----------------|
+| **`openstack_compute_instance_v2`** | VM provisioning | OpenStack compute |
+| **Floating IPs** | Public access | Network portability |
+| **Octavia LB** | HAProxy amphorae | Load balancing |
+| **Cinder Volumes** | Persistent storage | Block storage |
+| **Neutron Networking** | Provider/Internal | OpenStack networking |
+| **Cloud-Init** | Instance bootstrap | Automation |
+
+## 💬 Interview Questions
+
+```
+🔥 Q1: OpenStack Floating IP vs AWS EIP?
+A: Both portable public IPs. OpenStack = pool-based, AWS = allocation-based.
+
+🔥 Q2: Neutron Provider vs Internal networks?
+A: Provider = External gateway. Internal = Private VPC-like isolation.
+
+🔥 Q3: Octavia vs HAProxy charm?
+A: Octavia = Native OpenStack LBaaS. HAProxy = Juju charm deployment.
+```
+
+## 🧪 Testing Your Deployment
+
+```bash
+# Test load balancer health
+curl -I http://$(terraform output load_balancer_ip)
+
+# List instances
+openstack server list | grep tf-project14
+
+# Check volume attachments
+openstack volume list
+openstack server show $(terraform output instance_ips)
+
+# SSH test
+ssh -i ~/.ssh/id_rsa ubuntu@$(terraform output floating_ips.0)
+```
+
+## 🧹 Clean Up
+
+```bash
 terraform destroy -auto-approve
 
-# Manual verification
-openstack server list --all-projects
-openstack volume list --all-projects
+# Verify cleanup
+openstack server list --all-projects | grep tf-project14
+openstack loadbalancer list | grep tf-project14
 ```
 
-## 🔗 **Related Projects**
+## 🎓 Next Steps
+- **Project 15:** [Next OpenStack/Cloud Project]
+- **Practice:** Heat stacks, Magnum containers
+- **Advanced:** OpenStack-Helm, Kolla-Ansible
 
-| Previous | This Project | Next |
-|----------|--------------|------|
-| [13. ECS Fargate] | **14. OpenStack Instances** | [15. ???] |
+***
 
-## 📚 **Further Reading**
+**⭐ Star: https://github.com/Chinthaparthy-UmasankarReddy/Terraform-30-projects**  
+**🌐 Load Balancer: `$(terraform output load_balancer_ip)`**
 
-- [Terraform OpenStack Provider](https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest)
-- [OpenStack Heat Documentation](https://docs.openstack.org/heat/latest/)
-- [Octavia Load Balancer Guide](https://docs.openstack.org/octavia/latest/)
+*Updated: Jan 2026* 
 
----
 
-<div align="center">
 
-**⭐ Star:** https://github.com/Chinthaparthy-UmasankarReddy/Terraform-30-projects  
-**📁 Folder:** `projects/intermediate/14-openstack-instances`  
-**🌐 Load Balancer:** `$(terraform output load_balancer_ip)`  
-**✅ Status:** Production Ready | **📅 Updated:** Jan 2026
 
-</div>

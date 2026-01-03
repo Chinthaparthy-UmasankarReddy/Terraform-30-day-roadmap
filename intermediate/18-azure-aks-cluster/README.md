@@ -1,10 +1,11 @@
 
 # Terraform Project 18: Azure AKS Cluster 
 
-[
-[
-[
-[
+[![Project-18](https://img.shields.io/badge/Project_18-Azure_AKS-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)](projects/intermediate/18-azure-aks-cluster/)
+[![Multi-Pool](https://img.shields.io/badge/Multi--Pool-System_User-00D4AA?style=for-the-badge&logo=kubernetes&logoColor=white)](https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools)
+[![Azure-CNI](https://img.shields.io/badge/Azure_CNI-/24_per_node-FF6B35?style=for-the-badge&logo=networking&logoColor=white)](https://learn.microsoft.com/en-us/azure/aks/azure-cni-overview)
+[![AAD-RBAC](https://img.shields.io/badge/AAD_RBAC-Managed-32CD32?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://learn.microsoft.com/en-us/azure/aks/manage-azure-rbac)
+
 
 ## 🎯 Project Overview
 
@@ -374,6 +375,7 @@ az containerregistry show --name acraks* --resource-group $(terraform output.rg_
 **🖥️ ACR:** `$(terraform output.acr_login_server)`
 
 *Updated: Jan 2026*
+
 
 
 

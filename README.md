@@ -2,7 +2,7 @@
 # Terraform Projects - Beginner to Expert
 *30 Real-World Terraform Projects with Documentation Links*
 
-[
+
 
 ## 📋 Table of Contents
 - [Beginner Projects (1-10)](#beginner-projects-1-10)

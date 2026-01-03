@@ -8,7 +8,7 @@
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-EKS_AKS_GKE-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](projects/intermediate/)
 [![CI/CD](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](projects/intermediate/)
 [![Observability](https://img.shields.io/badge/Observability-ELK_Stack-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)](projects/intermediate/)
-[![Progress](https://img.shields.io/badge/Progress-20%2F30-66%25-FF6B35?style=for-the-badge&logo=progress-bar&logoColor=white)](projects/)
+
 
 **🎉 COMPLETE: Multi-Cloud Kubernetes + Observability + GitOps + Private Cloud + Lightsail**
 
@@ -384,6 +384,7 @@ terraform {
 [![Advanced](https://img.shields.io/badge/Advanced-0%2F10-FF5722?style=for-the-badge&logo=rocket&logoColor=white)](projects/advanced/)
 
 **Official Terraform Certification:** [HashiCorp Terraform Associate](https://www.hashicorp.com/certification/terraform-associate)
+
 
 
 

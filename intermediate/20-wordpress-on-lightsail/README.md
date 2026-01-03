@@ -1,10 +1,11 @@
 
 # Terraform Project 20: WordPress on Lightsail 
 
-[
-[
-[
-[
+[![Project-20](https://img.shields.io/badge/Project_20-WordPress_Lightsail-FF9900?style=for-the-badge&logo=amazon-lightsail&logoColor=white)](projects/intermediate/20-wordpress-lightsail/)
+[![Lightsail](https://img.shields.io/badge/Lightsail-nano_2gb-FF8C00?style=for-the-badge&logo=amazon-lightsail&logoColor=white)](https://aws.amazon.com/lightsail/)
+[![HA-DB](https://img.shields.io/badge/HA_MySQL-Daily_Backups-32CD32?style=for-the-badge&logo=postgresql&logoColor=white)](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-relational-database-service.html)
+[![SSL](https://img.shields.io/badge/SSL-LetsEncrypt-00D4AA?style=for-the-badge&logo=security&logoColor=white)](https://letsencrypt.org/)
+
 
 ## 🎯 Project Overview
 
@@ -349,6 +350,7 @@ aws lightsail get-relational-databases --region us-east-1
 ```
 
 **Ready for Advanced Projects? Say "Project-21"!** 🚀
+
 
 
 

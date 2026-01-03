@@ -1,25 +1,17 @@
+
+# Terraform 30 Projects - **INTERMEDIATE LEVEL CORE CONCEPTS** (Projects 11-20) - **COMPLETE DOCUMENTATION**
+
 <div align="center">
 
 # 🟡 INTERMEDIATE LEVEL (Projects 11-20) - CORE CONCEPTS MASTERY
 
-[![Intermediate](https://img.shields.io/badge/Intermediate-20%2F20_Complete-FF8C00?style=for-the-badge&logo=trophy&logoColor=white)](projects/intermediate/)
-[![Multi-Cloud](https://img.shields.io/badge/Multi--Cloud-5_Providers-4285F4?style=for-the-badge&logo=cloud&logoColor=white)](projects/intermediate/)
+[![Intermediate](https://img.shields.io/badge/Intermediate-20%2F20-FF8C00?style=for-the-badge&logo=trophy&logoColor=white)](projects/intermediate/)
+[![Multi-Cloud](https://img.shields.io/badge/Multi-Cloud-5_Providers-4285F4?style=for-the-badge&logo=cloud&logoColor=white)](projects/intermediate/)
 [![Production](https://img.shields.io/badge/Production-Ready-4CAF50?style=for-the-badge&logo=verified&logoColor=white)](projects/intermediate/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-EKS_AKS_GKE-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](projects/intermediate/)
-[![CI/CD](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](projects/intermediate/)
-[![Observability](https://img.shields.io/badge/Observability-ELK_Stack-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)](projects/intermediate/)
 
-
-**🎉 COMPLETE: Multi-Cloud Kubernetes + Observability + GitOps + Private Cloud + Lightsail**
-
-[![Terraform](https://img.shields.io/badge/Terraform-v1.9-5C3EE8?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
-[![AWS](https://img.shields.io/badge/AWS-Multiple_Services-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
-[![Azure](https://img.shields.io/badge/Azure-AKS_RBAC-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com/)
-[![GCP](https://img.shields.io/badge/GCP-GKE_Autopilot-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com/)
-[![OpenStack](https://img.shields.io/badge/OpenStack-Neutron_Octavia-FF6B35?style=for-the-badge&logo=openstack&logoColor=white)](https://www.openstack.org/)
+**🎉 COMPLETE: Multi-Cloud Kubernetes + Observability + GitOps + Private Cloud**
 
 </div>
-
 
 ---
 
@@ -373,10 +365,9 @@ terraform {
 📊 **TOTAL PROJECTS:** 20/30 COMPLETE (66%)
 📈 **SKILL LEVEL:** Production Engineer Ready
 🚀 **NEXT LEVEL:** Advanced (21-30) - Multi-cluster + Service Mesh
+```
 
-
-
-
+<div align="center">
 
 **🌟 READY FOR ADVANCED LEVEL (Projects 21-30)**  
 **Multi-Cluster Federation + Service Mesh + GitOps + Chaos Engineering + FinOps**
@@ -385,12 +376,7 @@ terraform {
 
 **Official Terraform Certification:** [HashiCorp Terraform Associate](https://www.hashicorp.com/certification/terraform-associate)
 
+</div>
 
 
-
-
-
-
-
-
-
+**Ready for Advanced Projects? Say "Project-21"!** 🚀

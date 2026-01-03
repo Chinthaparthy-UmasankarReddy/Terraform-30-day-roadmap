@@ -1,7 +1,10 @@
+
 # Terraform Project 2: S3 Bucket with Versioning
 
-[
-[
+[![Project-2](https://img.shields.io/badge/Project_2-S3_Versioning-FF9900?style=for-the-badge&logo=amazon-s3&logoColor=white)](projects/beginner/02-s3-bucket-versioning/)
+[![Free](https://img.shields.io/badge/Cost-Free-brightgreen?style=for-the-badge&logo=money-off&logoColor=white)](projects/beginner/02-s3-bucket-versioning/)
+[![Time](https://img.shields.io/badge/Time-20min-blue?style=flat&logo=clock&logoColor=white)](projects/beginner/02-s3-bucket-versioning/)
+
 
 ## 🎯 Project Overview
 
@@ -384,6 +387,7 @@ MIT License - Free for learning/portfolio
 **🐛 Issues: [Create Issue](https://github.com/Chinthaparthy-UmasankarReddy/Terraform-30-projects/issues/new)**
 
 *Updated: Jan 2026* 
+
 
 
 

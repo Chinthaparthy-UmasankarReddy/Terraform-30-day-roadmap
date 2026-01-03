@@ -1,9 +1,11 @@
 
-# Terraform Project 14: OpenStack Instances (Production Ready)
+# Terraform Project 14: OpenStack Instances 
 
-[
-[
-[
+[![Project-14](https://img.shields.io/badge/Project_14-OpenStack-FF6B35?style=for-the-badge&logo=openstack&logoColor=white)](projects/intermediate/14-openstack/)
+[![Neutron](https://img.shields.io/badge/Neutron-Networking-FF8C00?style=for-the-badge&logo=networking&logoColor=white)](https://docs.openstack.org/neutron/latest/)
+[![Floating-IP](https://img.shields.io/badge/Floating_IP-Portable-32CD32?style=for-the-badge&logo=networking&logoColor=white)](https://docs.openstack.org/neutron/latest/admin/intro-os-floating-ip.html)
+[![Octavia](https://img.shields.io/badge/Octavia-LBaaS-1E90FF?style=for-the-badge&logo=load-balancer&logoColor=white)](https://docs.openstack.org/octavia/latest/)
+
 
 ## 🎯 Project Overview
 
@@ -371,6 +373,7 @@ openstack loadbalancer list | grep tf-project14
 **🌐 Load Balancer: `$(terraform output load_balancer_ip)`**
 
 *Updated: Jan 2026* 
+
 
 
 

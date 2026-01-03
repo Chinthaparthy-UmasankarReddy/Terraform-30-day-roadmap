@@ -1,7 +1,10 @@
+
 # Terraform Project 4: RDS Database Instance
 
-[
-[
+[![Project-4](https://img.shields.io/badge/Project_4-RDS_MySQL-FF9900?style=for-the-badge&logo=amazon-rds&logoColor=white)](projects/beginner/04-rds-mysql-instance/)
+[![Cost](https://img.shields.io/badge/Cost-%240.025%2Fhr-green?style=flat&logo=amazon-aws&logoColor=white)](projects/beginner/04-rds-mysql-instance/)
+[![Time](https://img.shields.io/badge/Time-35min-blue?style=flat&logo=clock&logoColor=white)](projects/beginner/04-rds-mysql-instance/)
+
 
 ## 🎯 Project Overview
 
@@ -376,6 +379,7 @@ MIT License - Free for learning/portfolio
 **🐛 Issues: [Create Issue](https://github.com/Chinthaparthy-UmasankarReddy/Terraform-30-projects/issues/new)**
 
 *Updated: Jan 2026* 
+
 
 
 

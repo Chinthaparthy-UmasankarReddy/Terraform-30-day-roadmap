@@ -1,8 +1,10 @@
 
 # Terraform Project 7: Discourse Forum on DigitalOcean
 
-[
-[
+[![Project-7](https://img.shields.io/badge/Project_7-Discourse_DO-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white)](projects/beginner/07-discourse-digitalocean/)
+[![Cost](https://img.shields.io/badge/Cost-%2418%2Fmo-orange?style=flat&logo=digitalocean&logoColor=white)](projects/beginner/07-discourse-digitalocean/)
+[![Time](https://img.shields.io/badge/Time-25min-blue?style=flat&logo=clock&logoColor=white)](projects/beginner/07-discourse-digitalocean/)
+
 
 ## 🎯 Project Overview
 
@@ -425,6 +427,7 @@ MIT License - Free for learning/portfolio
 **🌐 Live Forum: `http://$(terraform output droplet_ip)`**
 
 *Updated: Jan 2026* 
+
 
 
 

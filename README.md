@@ -2,6 +2,9 @@
 # Terraform Projects - Beginner to Expert
 *30 Real-World Terraform Projects with Documentation Links*
 
+[![Terraform](https://img.shields.io/badge/Terraform-5C3EE8?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Chinthaparthy-UmasankarReddy/Terraform-30-projects)
+[![License-MIT](https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUyIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDE1MiAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTIiIGhlaWdodD0iMTYwIiBmaWxsPSIjMEU3NjI0Ii8+CjxwYXRoIGQ9Ik0xNCAxNDBIMTUyVjE2MEgxNFYxNDBaIiBmaWxsPSIjRkZGRkZGIi8+Cjwvc3ZnPgo=)](https://github.com/Chinthaparthy-UmasankarReddy/Terraform-30-projects/blob/main/LICENSE)
 
 
 ## 📋 Table of Contents

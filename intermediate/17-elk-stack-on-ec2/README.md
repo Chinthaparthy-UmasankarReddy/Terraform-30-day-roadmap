@@ -1,9 +1,11 @@
 
 # Terraform Project 17: ELK Stack on EC2 
 
-[
-[
-[
+[![Project-17](https://img.shields.io/badge/Project_17-ELK_Stack-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)](projects/intermediate/17-elk-stack-ec2/)
+[![Elasticsearch](https://img.shields.io/badge/ES-8.12_Cluster-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
+[![3-Node](https://img.shields.io/badge/3--Node_Multi--AZ-FF8C00?style=for-the-badge&logo=server-cluster&logoColor=white)](https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html)
+[![Kibana](https://img.shields.io/badge/Kibana-ALB_HTTPS-7BA3F2?style=for-the-badge&logo=kibana&logoColor=white)](https://www.elastic.co/kibana)
+
 
 ## 🎯 Project Overview
 
@@ -403,6 +405,7 @@ aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names elk-es*
 **🔐 Password:** `$(terraform output.elastic_password)`
 
 *Updated: Jan 2026* 
+
 
 
 

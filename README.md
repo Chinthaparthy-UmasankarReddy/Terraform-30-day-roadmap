@@ -1,8 +1,6 @@
 
-# Terraform Projects - Beginner to Expert
-*30 Real-World Terraform Projects with Documentation Links*
-
 # 🚀 Terraform 30 Projects - Beginner to Expert
+*30 Real-World Terraform Projects with Documentation Links*
 
 [![Terraform](https://img.shields.io/badge/Terraform-5C3EE8?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)

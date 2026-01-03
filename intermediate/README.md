@@ -1,3 +1,4 @@
+<div align="center">
 
 # 🟡 INTERMEDIATE LEVEL (Projects 11-20) - CORE CONCEPTS MASTERY
 
@@ -16,6 +17,8 @@
 [![Azure](https://img.shields.io/badge/Azure-AKS_RBAC-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com/)
 [![GCP](https://img.shields.io/badge/GCP-GKE_Autopilot-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com/)
 [![OpenStack](https://img.shields.io/badge/OpenStack-Neutron_Octavia-FF6B35?style=for-the-badge&logo=openstack&logoColor=white)](https://www.openstack.org/)
+
+</div>
 
 
 ---
@@ -381,6 +384,7 @@ terraform {
 [![Advanced](https://img.shields.io/badge/Advanced-0%2F10-FF5722?style=for-the-badge&logo=rocket&logoColor=white)](projects/advanced/)
 
 **Official Terraform Certification:** [HashiCorp Terraform Associate](https://www.hashicorp.com/certification/terraform-associate)
+
 
 
 

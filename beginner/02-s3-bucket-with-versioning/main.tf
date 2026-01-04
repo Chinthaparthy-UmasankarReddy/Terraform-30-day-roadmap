@@ -1,4 +1,3 @@
-
 # S3 Bucket
 resource "aws_s3_bucket" "project_bucket" {
   bucket = var.bucket_name
@@ -33,42 +32,36 @@ resource "aws_s3_bucket_lifecycle_configuration" "project_bucket_lifecycle" {
   bucket = aws_s3_bucket.project_bucket.id
 
   rule {
-    id     = "transition-to-ia"
+    id     = "delete-after-30-days"
     status = "Enabled"
 
-    transition {
-      days          = 30
-      storage_class = "STANDARD_IA"
+    filter {
+      prefix = ""  # Applies to all objects; use a specific path like "logs/" if needed
     }
 
-    noncurrent_version_transition {
-      noncurrent_days = 90
-      storage_class   = "GLACIER"
-    }
-
-    noncurrent_version_expiration {
-      noncurrent_days = 365
+    expiration {
+      days = 30
     }
   }
 }
 
+/*
 # Bucket Policy (Public Read for Website)
 resource "aws_s3_bucket_policy" "public_read" {
   bucket = aws_s3_bucket.project_bucket.id
 
   policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [
-      {
-        Sid       = "PublicReadGetObject"
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
-        Resources = ["${aws_s3_bucket.project_bucket.arn}/*"]
-      }
-    ]
+    Statement = [{
+      Sid       = "PublicReadGetObject"
+      Effect    = "Allow"
+      Principal = "*"
+      Action    = "s3:GetObject"
+      Resource  = "arn:aws:s3:::${aws_s3_bucket.project_bucket.id}/*"  # ✅ Correct: "Resource"
+    }]
   })
 }
+*/
 
 # Static Website Hosting
 resource "aws_s3_bucket_website_configuration" "project_bucket_website" {

@@ -390,8 +390,11 @@ MIT License - Free for learning/portfolio
 
 
 **Note**
+
 if you user above resource "aws_s3_bucket_lifecycle_configuration" "project_bucket_lifecycle" { }
 Incase Warning like these 
+
+
 ###################################################################
  Warning: Invalid Attribute Combination
 │ 
@@ -406,9 +409,11 @@ Incase Warning like these
 Success! The configuration is valid, but there were some validation warnings as shown above.
 ##################################################################
 
+
 Use belwo code for quick fix
 
-...bash
+
+```bash
 resource "aws_s3_bucket_lifecycle_configuration" "project_bucket_lifecycle" {
   bucket = aws_s3_bucket.project_bucket.id
 
@@ -427,7 +432,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "project_bucket_lifecycle" {
 }
 
 ...
+
 Explnation:
+
 
 
 The Terraform warning "Invalid Attribute Combination" appears because the aws_s3_bucket_lifecycle_configuration resource requires each rule block to specify exactly one filter mechanism—either filter (with sub-attributes like prefix) or the legacy prefix directly—but the config in main.tf line 31 provides neither.​
@@ -437,3 +444,4 @@ In newer AWS provider versions (v5.90+), validation enforces that lifecycle rule
 Why This Changed
 
 AWS lifecycle rules always needed scoping (e.g., prefix-based), but Terraform's provider recently added stricter schema validation to match AWS API expectations and prevent invalid plans. Empty rules previously "worked" by defaulting broadly but now fail validation.​
+

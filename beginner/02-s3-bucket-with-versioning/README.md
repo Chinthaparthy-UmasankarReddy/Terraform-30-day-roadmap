@@ -390,7 +390,7 @@ MIT License - Free for learning/portfolio
 
 
 **Note**
-
+...
 if you user above resource "aws_s3_bucket_lifecycle_configuration" "project_bucket_lifecycle" { }
 Incase Warning like these 
 
@@ -408,10 +408,9 @@ Incase Warning like these
 ╵
 Success! The configuration is valid, but there were some validation warnings as shown above.
 ##################################################################
-
+...
 
 Use belwo code for quick fix
-
 
 ```bash
 resource "aws_s3_bucket_lifecycle_configuration" "project_bucket_lifecycle" {
@@ -430,7 +429,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "project_bucket_lifecycle" {
     }
   }
 }
-
 ...
 
 Explnation:
@@ -444,4 +442,5 @@ In newer AWS provider versions (v5.90+), validation enforces that lifecycle rule
 Why This Changed
 
 AWS lifecycle rules always needed scoping (e.g., prefix-based), but Terraform's provider recently added stricter schema validation to match AWS API expectations and prevent invalid plans. Empty rules previously "worked" by defaulting broadly but now fail validation.​
+
 

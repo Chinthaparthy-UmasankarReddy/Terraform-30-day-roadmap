@@ -131,14 +131,15 @@ open $(terraform output website_url)
 ### **versions.tf** (EXACT Enterprise Versions)
 ```hcl
 terraform {
-  required_version = "1.9.4"        # AIG Financial Standard
+  required_version = "1.9.4"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.70.1"            # AIG Financial Standard
+      version = "5.42.0"     # Confirmed available for Terraform 1.9.x
     }
   }
 }
+
 ```
 
 ### **main.tf** (Production-Ready)
